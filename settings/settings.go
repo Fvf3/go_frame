@@ -7,10 +7,10 @@ import (
 )
 
 func Init() (err error) {
-	viper.SetConfigFile("config") //配置文件名称
-	viper.SetConfigType("yaml")   //配置文件类型
-	viper.AddConfigPath(".")      //配置查找配置文件的路径
-	err = viper.ReadInConfig()    // 读取配置文件
+	viper.SetConfigFile("config.yaml") //配置文件名称
+	viper.SetConfigType("yaml")        //配置文件类型
+	viper.AddConfigPath(".")           //配置查找配置文件的路径
+	err = viper.ReadInConfig()         // 读取配置文件
 	if err != nil {
 		fmt.Printf("viper.ReadInConfig() failed, err:%v\n", err) //没读到
 		return
