@@ -25,20 +25,20 @@ func main() {
 		return
 	}
 	//2.初始化日志
-	if err := logger.Init(); err != nil {
+	if err := logger.Init(settings.Conf.LogConfig); err != nil {
 		fmt.Printf("logger init error:%s", err.Error())
 		return
 	}
 	defer zap.L().Sync() //将缓冲区信息加载到logger中
 	zap.L().Debug("logger init success")
 	//3.初始化持久化数据库连接
-	if err := mysql.Init(); err != nil {
+	if err := mysql.Init(settings.Conf.MysqlConfig); err != nil {
 		fmt.Printf("mysql init error:%s", err.Error())
 		return
 	}
 	defer mysql.Close()
 	//4.初始化缓存数据库连接
-	if err := redis.Init(); err != nil {
+	if err := redis.Init(settings.Conf.RedisConfig); err != nil {
 		fmt.Printf("redis init error:%s", err.Error())
 		return
 	}
