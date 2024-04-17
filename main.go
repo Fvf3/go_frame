@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
@@ -19,8 +20,11 @@ import (
 
 // go web通用开发模板
 func main() {
+	var configName string
+	flag.StringVar(&configName, "configname", "dafault", "config file name") //通过flag获取命令行中指定的配置文件名，传给绑定的变量
+	flag.Parse()                                                             //解析命令行参数
 	//1.加载配置
-	if err := settings.Init(); err != nil {
+	if err := settings.Init(configName); err != nil {
 		fmt.Printf("settings init error:%s", err.Error())
 		return
 	}

@@ -1,5 +1,5 @@
 .idea
-.yaml
-.sum
-.exe
-.log
+*.yaml
+*.sum
+*.exe
+*.log
